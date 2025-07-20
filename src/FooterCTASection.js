@@ -2,12 +2,12 @@ import React, { useState, useEffect, forwardRef, useImperativeHandle } from 'rea
 
 const FooterCTASection = forwardRef((props, ref) => {
   const [visible, setVisible] = useState(false);
-  const [closed, setClosed] = useState(false);
+  const [manuallyClosed, setManuallyClosed] = useState(false);
 
   useImperativeHandle(ref, () => ({
     show: () => {
-      setClosed(false);
       setVisible(true);
+      setManuallyClosed(false);
     }
   }));
 
@@ -15,17 +15,17 @@ const FooterCTASection = forwardRef((props, ref) => {
     const handleScroll = () => {
       const scrollPosition = window.innerHeight + window.scrollY;
       const bottom = document.body.offsetHeight - 10;
-      if (scrollPosition >= bottom && !closed) {
+      if (scrollPosition >= bottom && !visible && !manuallyClosed) {
         setVisible(true);
       }
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [closed]);
+  }, [visible, manuallyClosed]);
 
   const handleClose = () => {
     setVisible(false);
-    setClosed(true);
+    setManuallyClosed(true);
   };
 
   return (

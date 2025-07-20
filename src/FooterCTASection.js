@@ -24,7 +24,7 @@ const FooterCTASection = () => {
   if (!visible) return null;
 
   return (
-    <footer className="footer-cta-section">
+    <footer className="footer-cta-section" id="footer-cta-section">
       <button className="footer-cta-close" onClick={handleClose} aria-label="Close">×</button>
       <div className="footer-cta-content">
         <p>Want to be the first to try StudySprint? Drop your email and we’ll invite you to the beta <span role="img" aria-label="seedling">🌱</span></p>

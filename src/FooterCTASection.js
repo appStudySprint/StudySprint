@@ -1,8 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, forwardRef, useImperativeHandle } from 'react';
 
-const FooterCTASection = () => {
+const FooterCTASection = forwardRef((props, ref) => {
   const [visible, setVisible] = useState(false);
   const [closed, setClosed] = useState(false);
+
+  useImperativeHandle(ref, () => ({
+    show: () => {
+      setClosed(false);
+      setVisible(true);
+    }
+  }));
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,10 +28,8 @@ const FooterCTASection = () => {
     setClosed(true);
   };
 
-  if (!visible) return null;
-
   return (
-    <footer className="footer-cta-section" id="footer-cta-section">
+    <footer className={`footer-cta-section${visible ? ' show' : ''}`} id="footer-cta-section">
       <button className="footer-cta-close" onClick={handleClose} aria-label="Close">×</button>
       <div className="footer-cta-content">
         <p>Want to be the first to try StudySprint? Drop your email and we’ll invite you to the beta <span role="img" aria-label="seedling">🌱</span></p>
@@ -46,6 +51,6 @@ const FooterCTASection = () => {
       </div>
     </footer>
   );
-};
+});
 
 export default FooterCTASection; 

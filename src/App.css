@@ -182,6 +182,13 @@ body {
   backdrop-filter: blur(8px);
   /* Add relative for close button */
   position: relative;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s;
+}
+.footer-cta-section.show {
+  opacity: 1;
+  pointer-events: auto;
 }
 .footer-cta-content {
   max-width: 600px;

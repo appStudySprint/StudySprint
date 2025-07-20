@@ -3,7 +3,7 @@ import React, { useState, useEffect, forwardRef, useImperativeHandle, useRef } f
 const FooterCTASection = forwardRef((props, ref) => {
   const [visible, setVisible] = useState(false);
   const [closed, setClosed] = useState(false);
-  const lastScrollY = useRef(window.scrollY);
+  // Removed unused lastScrollY
 
   useImperativeHandle(ref, () => ({
     show: () => {

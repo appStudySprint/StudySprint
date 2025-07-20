@@ -10,9 +10,9 @@ function App() {
   return (
     <div className="App">
       <HeroSection />
+      <RealTalkSection />
       <WhatIsSection />
       <ComingSoonSection />
-      <RealTalkSection />
       <FooterCTASection />
     </div>
   );

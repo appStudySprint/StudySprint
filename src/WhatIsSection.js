@@ -10,7 +10,6 @@ const WhatIsSection = () => (
       <li>XP, coins, levels, and streaks</li>
       <li>Track your stats and habit progress</li>
       <li>No pressure. Just cozy productivity vibes.</li>
-      <li>No subscription. Just free.</li>
     </ul>
   </section>
 );

@@ -6,7 +6,7 @@ const features = [
   { icon: '🌟', text: 'Boosters (Fertilizer, XP powerups)'},
   { icon: '👥', text: 'Study Groups (Sprint with friends)'},
   { icon: '🎨', text: 'Personalization (Sounds, themes, animations)'},
-  { icon: '🎁', text: 'Always free to start. Ads optional. Upgrades optional.'},
+  { icon: '⚔️', text: 'Competitions coming soon!'},
 ];
 
 const ComingSoonSection = () => (

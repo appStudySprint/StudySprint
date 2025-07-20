@@ -1,11 +1,14 @@
-import React, { useState, useEffect, forwardRef, useImperativeHandle } from 'react';
+import React, { useState, useEffect, forwardRef, useImperativeHandle, useRef } from 'react';
 
 const FooterCTASection = forwardRef((props, ref) => {
   const [visible, setVisible] = useState(false);
+  const [closed, setClosed] = useState(false);
+  const lastScrollY = useRef(window.scrollY);
 
   useImperativeHandle(ref, () => ({
     show: () => {
       setVisible(true);
+      setClosed(false);
     }
   }));
 
@@ -13,16 +16,31 @@ const FooterCTASection = forwardRef((props, ref) => {
     const handleScroll = () => {
       const scrollPosition = window.innerHeight + window.scrollY;
       const bottom = document.body.offsetHeight - 10;
-      if (scrollPosition >= bottom) {
+      const atBottom = scrollPosition >= bottom;
+      // If user scrolls up by at least 200px from the bottom, reset closed state
+      if (!atBottom && closed) {
+        const distanceFromBottom = document.body.offsetHeight - window.innerHeight - window.scrollY;
+        if (distanceFromBottom > 200) {
+          setClosed(false);
+        }
+      }
+      if (atBottom && !closed) {
         setVisible(true);
       }
     };
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    window.addEventListener('resize', handleScroll);
+    // Run once on mount
+    handleScroll();
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
+  }, [closed]);
 
   const handleClose = () => {
     setVisible(false);
+    setClosed(true);
   };
 
   return (

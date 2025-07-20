@@ -1,10 +1,10 @@
-import React, { useRef } from 'react';
+import React, { Suspense, useRef } from 'react';
 import './App.css';
 import HeroSection from './HeroSection';
 import WhatIsSection from './WhatIsSection';
 import ComingSoonSection from './ComingSoonSection';
 import RealTalkSection from './RealTalkSection';
-import FooterCTASection from './FooterCTASection';
+const FooterCTASection = React.lazy(() => import('./FooterCTASection'));
 
 function App() {
   const footerCTARef = useRef();
@@ -25,7 +25,9 @@ function App() {
       <RealTalkSection />
       <WhatIsSection />
       <ComingSoonSection />
-      <FooterCTASection ref={footerCTARef} />
+      <Suspense fallback={null}>
+        <FooterCTASection ref={footerCTARef} />
+      </Suspense>
     </div>
   );
 }

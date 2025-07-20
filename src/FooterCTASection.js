@@ -1,4 +1,12 @@
-import React, { useState, useEffect, forwardRef, useImperativeHandle, useRef } from 'react';
+import React, { useState, useEffect, forwardRef, useImperativeHandle } from 'react';
+
+function debounce(func, delay = 100) {
+  let timeout;
+  return (...args) => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, args), delay);
+  };
+}
 
 const FooterCTASection = forwardRef((props, ref) => {
   const [visible, setVisible] = useState(false);
@@ -28,13 +36,14 @@ const FooterCTASection = forwardRef((props, ref) => {
         setVisible(true);
       }
     };
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleScroll);
+    const debouncedHandleScroll = debounce(handleScroll, 100);
+    window.addEventListener('scroll', debouncedHandleScroll);
+    window.addEventListener('resize', debouncedHandleScroll);
     // Run once on mount
     handleScroll();
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleScroll);
+      window.removeEventListener('scroll', debouncedHandleScroll);
+      window.removeEventListener('resize', debouncedHandleScroll);
     };
   }, [closed]);
 
@@ -49,17 +58,23 @@ const FooterCTASection = forwardRef((props, ref) => {
       <div className="footer-cta-content">
         <p>Want to be the first to try StudySprint? Drop your email and we’ll invite you to the beta <span role="img" aria-label="seedling">🌱</span></p>
         <form className="cta-form" action="https://formspree.io/f/movljlbj" method="POST">
+          <label htmlFor="name">Name</label>
           <input
+            id="name"
             type="text"
             name="name"
             placeholder="Name"
             required
+            aria-required="true"
           />
+          <label htmlFor="email">Email</label>
           <input
+            id="email"
             type="email"
             name="email"
             placeholder="Email"
             required
+            aria-required="true"
           />
           <button type="submit">Notify Me</button>
         </form>

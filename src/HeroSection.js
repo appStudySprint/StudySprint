@@ -1,10 +1,33 @@
 import React from 'react';
 
+function smoothScrollTo(element, duration = 1200) {
+  const targetY = element.getBoundingClientRect().top + window.pageYOffset;
+  const startY = window.pageYOffset;
+  const diff = targetY - startY;
+  let start;
+
+  function step(timestamp) {
+    if (!start) start = timestamp;
+    const time = timestamp - start;
+    const percent = Math.min(time / duration, 1);
+    window.scrollTo(0, startY + diff * easeInOutQuad(percent));
+    if (percent < 1) {
+      window.requestAnimationFrame(step);
+    }
+  }
+
+  function easeInOutQuad(t) {
+    return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+  }
+
+  window.requestAnimationFrame(step);
+}
+
 const HeroSection = () => {
   const handleScrollToForm = () => {
     const formSection = document.getElementById('footer-cta-section');
     if (formSection) {
-      formSection.scrollIntoView({ behavior: 'smooth' });
+      smoothScrollTo(formSection, 1200);
     }
   };
 

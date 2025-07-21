@@ -30,21 +30,40 @@ section:last-of-type {
   background: none;
 }
 
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 2px 16px rgba(60,60,100,0.06);
+  z-index: 200;
+  padding: 0.5rem 0;
+  border-radius: 0 0 1.5rem 1.5rem;
+  transition: box-shadow 0.2s;
+}
+
 .hero-section {
-  padding: 5rem 1.5rem 3rem 1.5rem;
+  padding: 3.5rem 1.5rem 3rem 1.5rem;
   text-align: center;
-  background: var(--surface);
+  background: linear-gradient(180deg, #fff 60%, #f5f5f7 100%);
   border-radius: 0 0 2.5rem 2.5rem;
   box-shadow: 0 8px 32px 0 rgba(60,60,100,0.08);
-  backdrop-filter: blur(8px);
   margin-bottom: 2rem;
+  position: relative;
+  z-index: 100;
+}
+.hero-content {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 .hero-section h1 {
-  font-size: 2.8rem;
+  font-size: 3.2rem;
   font-weight: 800;
   margin-bottom: 1.2rem;
-  color: var(--text);
+  color: #111;
   letter-spacing: -1px;
+  line-height: 1.1;
 }
 .hero-sub {
   font-size: 1.25rem;
@@ -53,25 +72,55 @@ section:last-of-type {
   font-weight: 400;
 }
 .cta-btn {
-  background: linear-gradient(90deg, var(--accent) 0%, var(--primary) 100%);
-  color: var(--text);
-  font-size: 1.15rem;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: #fff;
+  font-size: 1.18rem;
   border: none;
   border-radius: 2rem;
   padding: 1rem 2.5rem;
-  box-shadow: 0 2px 12px 0 rgba(60,60,100,0.08);
+  box-shadow: 0 2px 12px 0 rgba(60,60,100,0.12), 0 1px 8px 0 rgba(0,0,0,0.08);
   cursor: pointer;
-  font-weight: 600;
-  transition: background 0.3s, box-shadow 0.2s;
+  font-weight: 700;
+  transition: background 0.3s, box-shadow 0.2s, transform 0.15s;
+  margin-top: 2.2rem;
+  display: inline-block;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.10);
 }
 .cta-btn:hover {
+  background: linear-gradient(90deg, var(--primary-dark) 0%, var(--primary) 100%);
+  color: #fff;
+  box-shadow: 0 4px 24px 0 rgba(60,60,100,0.16);
+  transform: scale(1.04) translateY(-2px);
+}
+.cta-btn:active {
   background: var(--primary-dark);
   color: #fff;
-  box-shadow: 0 4px 24px 0 rgba(60,60,100,0.12);
+  box-shadow: 0 2px 8px 0 rgba(60,60,100,0.10);
+  transform: scale(0.98);
 }
 .cta-btn:focus {
   outline: 2px dashed var(--primary);
   outline-offset: 4px;
+}
+
+.what-is-section, .real-talk-section, .coming-soon-section {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 40px 0 rgba(60,60,100,0.14), 0 1.5px 18px 0 var(--primary-dark);
+  transition: transform 0.38s cubic-bezier(.4,0,.2,1), box-shadow 0.38s cubic-bezier(.4,0,.2,1);
+}
+.what-is-section:hover, .real-talk-section:hover, .coming-soon-section:hover {
+  transform: scale(1.012) translateY(-2px);
+  box-shadow: 0 10px 28px 0 rgba(60,60,100,0.16), 0 2px 12px 0 var(--primary-dark);
+  z-index: 10;
+}
+.what-is-section::after, .real-talk-section::after, .coming-soon-section::after {
+  content: none;
+}
+.what-is-content, .real-talk-content, .coming-soon-content {
+  position: relative;
+  z-index: 1;
 }
 
 .what-is-section {
@@ -79,16 +128,21 @@ section:last-of-type {
   max-width: 700px;
   margin: 0 auto 2rem auto;
   text-align: center;
-  background: var(--surface);
+  background: #fff;
   border-radius: 2rem;
   box-shadow: 0 4px 24px 0 rgba(60,60,100,0.06);
-  backdrop-filter: blur(6px);
+}
+.what-is-content {
+  max-width: 540px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 .what-is-section h2 {
   font-size: 2.1rem;
   margin-bottom: 1.1rem;
-  color: var(--text);
+  color: #111;
   font-weight: 700;
+  letter-spacing: -0.02em;
 }
 .what-is-section p {
   font-size: 1.15rem;
@@ -115,18 +169,23 @@ section:last-of-type {
 
 .coming-soon-section {
   padding: 3.5rem 1.5rem 2.5rem 1.5rem;
-  background: var(--surface);
+  background: #fff;
   border-radius: 2rem;
   max-width: 900px;
   margin: 2rem auto;
   box-shadow: 0 4px 24px 0 rgba(60,60,100,0.06);
-  backdrop-filter: blur(6px);
+}
+.coming-soon-content {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 .coming-soon-section h2 {
   font-size: 2.1rem;
   margin-bottom: 2rem;
-  color: var(--text);
+  color: #111;
   font-weight: 700;
+  letter-spacing: -0.02em;
 }
 .coming-soon-grid {
   display: grid;
@@ -153,16 +212,21 @@ section:last-of-type {
   max-width: 700px;
   margin: 0 auto 2rem auto;
   text-align: center;
-  background: var(--surface);
+  background: #fff;
   border-radius: 2rem;
   box-shadow: 0 4px 24px 0 rgba(60,60,100,0.06);
-  backdrop-filter: blur(6px);
+}
+.real-talk-content {
+  max-width: 540px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 .real-talk-section h2 {
   font-size: 2.1rem;
   margin-bottom: 1.1rem;
-  color: var(--text);
+  color: #111;
   font-weight: 700;
+  letter-spacing: -0.02em;
 }
 .real-talk-section p {
   font-size: 1.15rem;
@@ -197,17 +261,28 @@ section:last-of-type {
   outline: 2px dashed var(--primary);
   outline-offset: 4px;
 }
+.footer-cta-anim {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s cubic-bezier(.4,0,.2,1), transform 0.9s cubic-bezier(.4,0,.2,1);
+}
+.footer-cta-anim.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
 .footer-cta-section {
   position: sticky;
   bottom: 0;
   width: 100%;
   z-index: 10;
-  background: var(--surface);
+  background: #fff;
   padding: 2.5rem 1.5rem 2.5rem 1.5rem;
   border-radius: 2rem 2rem 0 0;
   box-shadow: 0 -2px 24px 0 rgba(60,60,100,0.08);
   backdrop-filter: blur(8px);
-  /* Add relative for close button */
   position: relative;
   opacity: 0;
   pointer-events: none;
@@ -221,12 +296,14 @@ section:last-of-type {
   max-width: 600px;
   margin: 0 auto;
   text-align: center;
+  background: none;
 }
 .footer-cta-content p {
-  font-size: 1.15rem;
-  color: var(--text);
+  font-size: 1.18rem;
+  color: #111;
   margin-bottom: 1.3rem;
-  font-weight: 500;
+  font-weight: 600;
+  background: none;
 }
 .cta-form {
   display: flex;
@@ -254,19 +331,27 @@ section:last-of-type {
 .cta-form button {
   background: linear-gradient(90deg, var(--accent) 0%, var(--primary) 100%);
   color: var(--text);
-  font-size: 1.15rem;
+  font-size: 1.18rem;
   border: none;
   border-radius: 2rem;
-  padding: 0.8rem 2.2rem;
+  padding: 1rem 2.5rem;
   box-shadow: 0 2px 12px 0 rgba(60,60,100,0.08);
   cursor: pointer;
-  font-weight: 600;
-  transition: background 0.3s, box-shadow 0.2s;
+  font-weight: 700;
+  transition: background 0.3s, box-shadow 0.2s, transform 0.15s;
+  outline: none;
 }
 .cta-form button:hover {
   background: var(--primary-dark);
   color: #fff;
   box-shadow: 0 4px 24px 0 rgba(60,60,100,0.12);
+  transform: scale(1.04) translateY(-2px);
+}
+.cta-form button:active {
+  background: var(--primary-dark);
+  color: #fff;
+  box-shadow: 0 2px 8px 0 rgba(60,60,100,0.10);
+  transform: scale(0.98);
 }
 .cta-form button:focus {
   outline: 2px dashed var(--primary);
@@ -283,7 +368,27 @@ section:last-of-type {
   font-weight: 600;
 }
 
+.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.9s cubic-bezier(.4,0,.2,1), transform 0.9s cubic-bezier(.4,0,.2,1);
+}
+.hero-content {
+  opacity: 1;
+  transform: none;
+}
+
 @media (max-width: 768px) {
+  .hero-section {
+    padding: 2.5rem 1rem 2rem 1rem;
+  }
+  .hero-section h1 {
+    font-size: 2.1rem;
+  }
+  .cta-btn {
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+  }
   .hero-section,
   .what-is-section,
   .real-talk-section,

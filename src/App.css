@@ -398,10 +398,30 @@ section:last-of-type {
 }
 
 @media (max-width: 700px) {
-  .coming-soon-grid {
-    grid-template-columns: 1fr;
-  }
   .footer-cta-section {
     border-radius: 1.2rem 1.2rem 0 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    min-width: 0;
+    max-width: 100vw;
+    margin: 0;
+    padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+    box-sizing: border-box;
+  }
+  .footer-cta-content {
+    padding: 0;
+    max-width: 100vw;
+  }
+  .cta-form input {
+    width: 95vw;
+    max-width: 320px;
+    font-size: 1rem;
+  }
+  .cta-form button {
+    width: 95vw;
+    max-width: 320px;
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
   }
 }

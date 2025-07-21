@@ -23,6 +23,12 @@ const socials = [
       <circle cx="22" cy="12" r="1" fill="#111"/>
     </svg>
   ) },
+  { name: 'Facebook', url: '#', icon: (
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="16" cy="16" r="16" fill="#F5F5F7"/>
+      <text x="16" y="22" textAnchor="middle" fontSize="16" fontWeight="bold" fill="#1877F3">f</text>
+    </svg>
+  ) },
 ];
 
 function SocialMediaSection() {

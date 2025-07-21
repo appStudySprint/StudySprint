@@ -28,7 +28,7 @@ const socials = [
 function SocialMediaSection() {
   return (
     <section className="social-media-section">
-      <h2>Follow Us</h2>
+      <h2>Follow StudySprint</h2>
       <div className="social-icons">
         {socials.map((social) => (
           <a

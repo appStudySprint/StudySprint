@@ -40,60 +40,46 @@ const NavBar = () => {
   }
 
   return (
-    <>
-      <div style={{
-        position: 'fixed',
-        top: 10,
-        right: 10,
-        zIndex: 99999,
-        background: 'lime',
-        color: 'black',
-        padding: '10px',
-        border: '2px solid red'
-      }}>
-        BURGER TEST
-      </div>
-      <nav className="navbar">
-        <div className="navbar-content">
-          <span className="navbar-logo">StudySprint</span>
-          <button
-            className="navbar-burger"
-            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={menuOpen}
-            onClick={() => setMenuOpen((open) => !open)}
-          >
-            <span className="burger-bar" />
-            <span className="burger-bar" />
-            <span className="burger-bar" />
-          </button>
-          <ul className="navbar-links">
+    <nav className="navbar">
+      <div className="navbar-content">
+        <span className="navbar-logo">StudySprint</span>
+        <button
+          className="navbar-burger"
+          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          <span className="burger-bar" />
+          <span className="burger-bar" />
+          <span className="burger-bar" />
+        </button>
+        <ul className="navbar-links">
+          {navLinks.map(link => (
+            <li key={link.to}>
+              <button className="navbar-link" onClick={() => scrollToSection(link.to)}>
+                {link.label}
+              </button>
+            </li>
+          ))}
+        </ul>
+        {/* Mobile menu */}
+        <div
+          className={`navbar-mobile-menu${menuOpen ? ' open' : ''}`}
+          ref={menuRef}
+          aria-hidden={!menuOpen}
+        >
+          <ul>
             {navLinks.map(link => (
               <li key={link.to}>
-                <button className="navbar-link" onClick={() => scrollToSection(link.to)}>
+                <button className="navbar-link" onClick={() => handleNavClick(link.to)}>
                   {link.label}
                 </button>
               </li>
             ))}
           </ul>
-          {/* Mobile menu */}
-          <div
-            className={`navbar-mobile-menu${menuOpen ? ' open' : ''}`}
-            ref={menuRef}
-            aria-hidden={!menuOpen}
-          >
-            <ul>
-              {navLinks.map(link => (
-                <li key={link.to}>
-                  <button className="navbar-link" onClick={() => handleNavClick(link.to)}>
-                    {link.label}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
-      </nav>
-    </>
+      </div>
+    </nav>
   );
 };
 

@@ -406,6 +406,33 @@ section:last-of-type {
 }
 
 @media (max-width: 700px) {
+  .coming-soon-section,
+  .what-is-section,
+  .real-talk-section {
+    max-width: 100%;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    border-radius: 1.2rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    box-sizing: border-box;
+  }
+  .coming-soon-grid {
+    grid-template-columns: 1fr !important;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .coming-soon-feature {
+    width: 100%;
+    box-sizing: border-box;
+    word-break: break-word;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
   .footer-cta-section {
     border-radius: 1.2rem 1.2rem 0 0;
     left: 0;

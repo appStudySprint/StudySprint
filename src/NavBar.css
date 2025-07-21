@@ -81,8 +81,22 @@
 }
 
 @media (max-width: 900px) {
+  .navbar-content {
+    padding: 0 0.5rem;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .navbar-logo {
+    font-size: 1.1rem;
+    max-width: 60vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
   .navbar-burger {
-    display: flex;
+    z-index: 9999 !important;
+    position: relative;
+    margin-left: auto;
   }
   .navbar-links {
     display: none;
